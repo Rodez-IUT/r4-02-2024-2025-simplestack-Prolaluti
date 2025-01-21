@@ -3,8 +3,8 @@
 ### NOM : LALUTI
 ### Prénom : Ayoub
 ### Groupe de TP :
-- [ ] A1-A2
-- [X] A3-A4
+- [X] A1-A2
+- [ ] A3-A4
 - [ ] D
 
 ### Consignes générales
