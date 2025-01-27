@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class SimpleStack implements Stack {
 
-    private ArrayList<Item> liste;
+    private final ArrayList<Item> liste;
 
     public SimpleStack() {
-    this.liste = new ArrayList<Item>();
+    this.liste = new ArrayList<>();
     }
 
     /**
@@ -41,7 +41,7 @@ public class SimpleStack implements Stack {
      * Looks at the object at the top of this stack without removing it from the stack.
      */
     @Override
-    public Item peek() throws EmptyStackException {
+    public Item peek() {
         return this.liste.get(getSize() - 1 );
     }
 
@@ -56,6 +56,7 @@ public class SimpleStack implements Stack {
         if (this.getSize() == 0) {
             throw new EmptyStackException();
         }
+
         return this.liste.remove(this.getSize() - 1);
     }
 }

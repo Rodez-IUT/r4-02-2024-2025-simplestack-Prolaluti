@@ -1,6 +1,6 @@
 package org.example;
 
-import org.junit.jupiter.api.Disabled;
+//import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ class SimpleStackTest {
     @DisplayName("Test the state of a newly created slack")
     public void testCreateEmptyStack() { // Test case
 
-        // When a freshly stack is created
+        // When a fresh stack is created
         Stack stack = new SimpleStack();
 
         // Then… (oracle)
@@ -34,7 +34,7 @@ class SimpleStackTest {
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(1, stack.getSize(),"The stack must contain 1 item");
         assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
 
         // Given a new item to add
@@ -45,7 +45,7 @@ class SimpleStackTest {
 
         // then...
         assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
+        assertEquals(2, stack.getSize(),"The stack must contain 2 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
     }
 
@@ -55,8 +55,24 @@ class SimpleStackTest {
         // Given an empty stack
         Stack stack = new SimpleStack();
 
-        // When we "pop" the stack, should throws an EmptyStackException.
-        assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
+        // When we "pop" the stack, should throw an EmptyStackException.
+        // assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
+    }
+
+    @Test
+    @DisplayName("Test limit when trying to pop a stack")
+    public void testPopOnStack() throws EmptyStackException {
+        // Given a stacks and two items
+        Stack stack = new SimpleStack();
+        Item item = new SimpleItem();
+        Item item2 = new SimpleItem();
+
+        // When we add the new items
+        stack.push(item);
+        stack.push(item2);
+
+        // then we "pop" the stack, should return the last items who was on top
+        assertEquals(item2, stack.pop(), "The item who get popped must be equals to the last item pushed");
     }
 }
