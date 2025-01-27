@@ -74,5 +74,6 @@ class SimpleStackTest {
 
         // then we "pop" the stack, should return the last items who was on top
         assertEquals(item2, stack.pop(), "The item who get popped must be equals to the last item pushed");
+        assertSame( item, stack.peek(),"The another item must be on top of the stack");
     }
 }
